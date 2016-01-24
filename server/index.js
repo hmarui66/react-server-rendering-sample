@@ -6,7 +6,11 @@ var React = require('../public/assets/app.server');
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
 // for server side logic
-app.get('api/items', function (req, res, next) {
+app.get('/api/me', function (req, res, next) {
+  res.json({ name: 'hoge', date: new Date() });
+});
+
+app.get('/api/items', function (req, res, next) {
   res.json([
     {id: 1, text: 'first'},
     {id: 2, text: 'second'},
@@ -14,7 +18,7 @@ app.get('api/items', function (req, res, next) {
   ]);
 });
 
-app.get('api/users', function (req, res, next) {
+app.get('/api/users', function (req, res, next) {
   res.json([
     {id: 1, name: 'Hoge'},
     {id: 2, name: 'Fuga'},
