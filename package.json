@@ -1,0 +1,32 @@
+{
+  "name": "react-server-rendering-sample",
+  "version": "1.0.0",
+  "description": "react server rendering sample.",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rimraf public",
+    "start": "node server/index.js",
+    "build:webpack": "webpack --progress --colors",
+    "build": "npm run clean && npm run build:webpack",
+    "postinstall": "npm run build"
+  },
+  "keywords": [
+    "react",
+    "serverside-rendering"
+  ],
+  "author": "hmarui66",
+  "license": "MIT",
+  "dependencies": {
+    "babel-core": "^6.4.5",
+    "babel-loader": "^6.2.1",
+    "babel-plugin-add-module-exports": "^0.1.2",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "express": "^4.13.4",
+    "json-loader": "^0.5.4",
+    "react": "^0.14.6",
+    "react-dom": "^0.14.6",
+    "rimraf": "^2.5.1",
+    "webpack": "^1.12.12"
+  }
+}
