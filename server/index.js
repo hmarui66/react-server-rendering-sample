@@ -14,6 +14,14 @@ app.get('api/items', function (req, res, next) {
   ]);
 });
 
+app.get('api/users', function (req, res, next) {
+  res.json([
+    {id: 1, name: 'Hoge'},
+    {id: 2, name: 'Fuga'},
+    {id: 3, name: 'Bar'}
+  ]);
+});
+
 // for server side rendering
 app.get('*', function (req, res, next) {
   React(req, res);
