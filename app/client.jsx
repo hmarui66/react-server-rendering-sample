@@ -2,4 +2,5 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from 'App';
 
-ReactDOM.render(<App />, document.getElementById('app'))
+const props = window.APP_PROPS;
+ReactDOM.render(<App { ...props } />, document.getElementById('app'))

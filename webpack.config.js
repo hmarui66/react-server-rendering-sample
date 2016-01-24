@@ -1,3 +1,4 @@
+var webpack = require('webpack');
 var path = require('path');
 
 var assetsPath = path.join(__dirname, 'public', 'assets');

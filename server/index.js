@@ -6,7 +6,7 @@ var React = require('../public/assets/app.server');
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
 // for server side logic
-app.get('api/items', function (req, res, next) {
+app.get('/api/items', function (req, res, next) {
   res.json([
     {id: 1, text: 'first'},
     {id: 2, text: 'second'},
