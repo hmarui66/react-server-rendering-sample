@@ -1,7 +1,25 @@
 import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import { loadUsers } from './actions';
 
 export default class Users extends Component {
+
+  static fetchData() {
+    return loadUsers();
+  }
+
+  static propTypes = {
+    users: PropTypes.array
+  };
+
+  componentWillMount() {
+    const { dispatch } = this.props;
+    if (this.props.didMount) {
+      dispatch(loadUsers());
+    }
+  }
+
   render() {
     const { users = [] } = this.props;
     return (
@@ -19,6 +37,13 @@ export default class Users extends Component {
   }
 }
 
-Users.propTypes = {
-  users: PropTypes.array
-};
+function mapStateToProps(state) {
+  return {
+    didMount: state.app.didMount,
+    users: state.user.users
+  };
+}
+
+export default connect(
+  mapStateToProps
+)(Users);

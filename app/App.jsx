@@ -1,16 +1,48 @@
 import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { loadMe, didMount } from './actions';
 
-export default class App extends Component {
+class App extends Component {
+
+  static fetchData() {
+    return loadMe();
+  }
+
+  static propTypes = {
+    children: PropTypes.object
+  };
+
+  componentWillMount() {
+    const { dispatch } = this.props;
+    if (this.props.didMount) {
+      dispatch(loadMe());
+    }
+  }
+
+  componentDidMount() {
+    const { dispatch } = this.props;
+    dispatch(didMount());
+  }
+
   render() {
+    const { me } = this.props;
     return (
       <div>
-        <h1>Hello SSR!</h1>
+        <h1>Hello {me.name}!</h1>
+        <p>server date {me.date}!</p>
         {this.props.children}
       </div>
     );
   }
 }
 
-App.propTypes = {
-  children: PropTypes.object
-};
+function mapStateToProps(state) {
+  return {
+    didMount: state.app.didMount,
+    me: state.app.me
+  };
+}
+
+export default connect(
+  mapStateToProps
+)(App);
